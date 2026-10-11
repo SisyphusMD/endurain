@@ -1067,6 +1067,7 @@ class TestStravaActivityVisibility:
     @patch("activities.activity.crud.activities_utils.serialize_activity")
     @patch("activities.activity.crud.activities_utils.apply_visibility_mask")
     def test_owner_sees_own_strava_activity(self, mock_mask, mock_ser, sqlite_session):
+        """The owner can still open their own Strava-synced activity."""
         import activities.activity.crud as crud
 
         result = crud.get_activity_by_id_from_user_id_or_has_visibility(activity_id=2, user_id=1, db=sqlite_session)
@@ -1074,6 +1075,7 @@ class TestStravaActivityVisibility:
 
     @patch("activities.activity.crud.activities_utils.serialize_activity")
     def test_follower_cannot_open_strava_activity(self, mock_ser, sqlite_session):
+        """A follower cannot open a Strava-synced activity."""
         import activities.activity.crud as crud
 
         result = crud.get_activity_by_id_from_user_id_or_has_visibility(activity_id=2, user_id=2, db=sqlite_session)
@@ -1082,6 +1084,7 @@ class TestStravaActivityVisibility:
     @patch("activities.activity.crud.activities_utils.serialize_activity")
     @patch("activities.activity.crud.activities_utils.apply_visibility_mask")
     def test_follower_profile_list_excludes_strava_activity(self, mock_mask, mock_ser, sqlite_session):
+        """The profile list a follower sees leaves out the Strava-synced activity."""
         import activities.activity.crud as crud
 
         crud.get_user_activities(user_id=1, db=sqlite_session, user_is_owner=False, requester_user_id=2)
@@ -1089,6 +1092,7 @@ class TestStravaActivityVisibility:
 
     @patch("activities.activity.crud.activities_utils.serialize_activity")
     def test_follower_feed_excludes_strava_activity(self, mock_ser, sqlite_session):
+        """The follower feed keeps the regular activity and leaves out the Strava-synced one."""
         import activities.activity.crud as crud
 
         crud.get_user_following_activities(user_id=2, db=sqlite_session)
