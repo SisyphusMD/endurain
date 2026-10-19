@@ -17,8 +17,8 @@ apt install -y \
 Install the required tools from their official sources:
 
 - uv (Python) → https://docs.astral.sh/uv/
-- Node.js 22 → https://nodejs.org/en/download
-- PostgreSQL 17 → https://www.postgresql.org/download/
+- Node.js 24 → https://nodejs.org/en/download
+- PostgreSQL 18 → https://www.postgresql.org/download/
 
 ## 3. Download Endurain Release
 
@@ -28,8 +28,8 @@ Run the following command to download and unpack the latest release.
 mkdir -p /path/to/endurain
 cd /path/to/endurain
 
-TAG=$(curl -s https://codeberg.org/api/v1/repos/endurain-project/endurain/releases | grep -oP '"tag_name": "\K([^"]+)' | head -n 1)
-curl -L "https://codeberg.org/endurain-project/endurain/archive/$TAG.tar.gz" \
+TAG=$(curl -s https://api.github.com/repos/endurain-project/endurain/releases | grep -oP '"tag_name": "\K([^"]+)' | head -n 1)
+curl -L "https://github.com/endurain-project/endurain/archive/refs/tags/$TAG.tar.gz" \
   | tar xz
 EXTRACTED=$(ls -d endurain-*)
 shopt -s dotglob
@@ -66,7 +66,7 @@ nano /path/to/endurain/.env
 ```
 
 Adjust the environment variables and set keys. You definitely have to adjust `FRONTEND_DIR`, `BACKEND_DIR` and `DB_HOST`.  
-Environment variables are explained in the [Environment Variables Guide](advanced-started.md).
+Environment variables are explained in the [Environment Variables Guide](advanced-setup.md).
 
 ```env
 DB_HOST=localhost
@@ -220,8 +220,8 @@ systemctl stop endurain
 rm -rf /path/to/endurain/*
 cd /path/to/endurain
 
-TAG=$(curl -s https://codeberg.org/api/v1/repos/endurain-project/endurain/releases | grep -oP '"tag_name": "\K([^"]+)' | head -n 1)
-curl -L "https://codeberg.org/endurain-project/endurain/archive/$TAG.tar.gz" \
+TAG=$(curl -s https://api.github.com/repos/endurain-project/endurain/releases | grep -oP '"tag_name": "\K([^"]+)' | head -n 1)
+curl -L "https://github.com/endurain-project/endurain/archive/refs/tags/$TAG.tar.gz" \
   | tar xz
 EXTRACTED=$(ls -d endurain-*)
 shopt -s dotglob

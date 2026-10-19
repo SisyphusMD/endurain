@@ -34,13 +34,13 @@ const CONTENT_SECURITY_POLICY = [
   "form-action 'self'",
   "frame-src 'none'",
   "manifest-src 'self'",
-  // Same-origin API + realtime sockets are covered by 'self'. codeberg.org is the
+  // Same-origin API + realtime sockets are covered by 'self'. api.github.com is the
   // release-update check (features/core/services/updateCheck.ts), a direct browser
   // fetch. Split-origin deployments additionally get their exact backend origin
   // pinned here at container start by docker/start.sh (from ENDURAIN_HOST), which
   // rewrites this directive by matching to the end of the meta `content` attribute
   // — so connect-src MUST stay the LAST directive in this list.
-  "connect-src 'self' https://codeberg.org",
+  "connect-src 'self' https://api.github.com",
 ].join('; ')
 
 /**
@@ -100,7 +100,12 @@ export default defineConfig({
         // env.js is written at container start (docker/start.sh) and is NOT
         // content-hashed; precaching it would freeze each tenant's runtime
         // config to a stale build-time snapshot.
-        globIgnores: ['**/env.js'],
+        //
+        // The default login background is a multi-MB decorative image used on
+        // a single screen; it is above Workbox's 2 MiB precache cap and would
+        // bloat the install payload for every client, so it is fetched from
+        // the network instead.
+        globIgnores: ['**/env.js', '**/assets/login-*.png'],
         cleanupOutdatedCaches: true,
         clientsClaim: true,
         skipWaiting: true,

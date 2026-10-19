@@ -1,5 +1,5 @@
 # Stage 0: Pin uv version
-FROM ghcr.io/astral-sh/uv:0.11.18@sha256:78bc42400d77b0678ba95765305c826652ed5431f399257271dda681d0318f03 AS uv-dist
+FROM ghcr.io/astral-sh/uv:0.12.23@sha256:61d393e44e249f2e4b526b6c7ddcecce245946826e608e11c93ad4f5bba55b21 AS uv-dist
 
 # Stage 1: Build Vue.js app
 FROM node:24-slim@sha256:242549cd46785b480c832479a730f4f2a20865d61ea2e404fdb2a5c3d3b73ecf AS frontend-build
@@ -20,6 +20,12 @@ RUN npm run build
 # Stage 2: Install requirements
 FROM python:3.13-alpine@sha256:420cd0bf0f3998275875e02ecd5808168cf0843cbb4d3c536432f729247b2acc AS requirements-stage
 
+# Optional project extras baked into the image. Empty by default so the image
+# stays lean for `local` deployments. Build with
+# `--build-arg PYTHON_EXTRAS=distributed` to add the Redis / S3 dependencies
+# required by REDIS_URL / STATE_URI / EVENTS_URI=redis://... and STORAGE_URI=s3://...
+ARG PYTHON_EXTRAS=""
+
 # Set the working directory
 WORKDIR /tmp/backend
 
@@ -30,7 +36,7 @@ COPY --from=uv-dist /uv /uvx /usr/local/bin/
 COPY backend/pyproject.toml backend/uv.lock ./
 
 # Export production dependencies to requirements.txt
-RUN uv export --no-emit-project --no-dev -o requirements.txt
+RUN uv export --no-emit-project --no-dev ${PYTHON_EXTRAS:+--extra "$PYTHON_EXTRAS"} -o requirements.txt
 
 # Stage 3: Build FastAPI app
 FROM python:3.13-alpine@sha256:420cd0bf0f3998275875e02ecd5808168cf0843cbb4d3c536432f729247b2acc

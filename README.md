@@ -1,7 +1,4 @@
 > [!NOTE]
-> **GitHub Mirror** - If you are viewing this on GitHub, please be aware that this repository is a read-only mirror. Issues, pull requests, and all project activity are tracked on Codeberg: [https://codeberg.org/endurain-project/endurain](https://codeberg.org/endurain-project/endurain)
-
-> [!NOTE]
 > **Endurain is on a temporary feature freeze** - The project is not paused. The focus is shifting from new features to strengthening the foundations. More details [here](https://docs.endurain.com/blog/2026/05/23/pausing-new-features-so-endurain-can-keep-growing/)
 
 <div align="center">
@@ -11,12 +8,12 @@
 
   <a href="https://translate.codeberg.org/engage/endurain/"><img src="https://translate.codeberg.org/widget/endurain/svg-badge.svg" alt="Translation status"></a>
   [![License](https://img.shields.io/badge/license-AGPL%20v3-blue)](./LICENSE)
-  [![Release](https://img.shields.io/badge/dynamic/json?url=https://codeberg.org/api/v1/repos/endurain-project/endurain/releases/latest&query=$.tag_name&label=release&color=blue)](https://codeberg.org/endurain-project/endurain/releases)
-  [![Stars](https://img.shields.io/badge/dynamic/json?url=https://codeberg.org/api/v1/repos/endurain-project/endurain&query=$.stars_count&label=stars&logo=codeberg)](https://codeberg.org/endurain-project/endurain)
+  [![Release](https://img.shields.io/github/v/release/endurain-project/endurain?label=release&color=blue)](https://github.com/endurain-project/endurain/releases)
+  [![Stars](https://img.shields.io/github/stars/endurain-project/endurain?label=stars&logo=github)](https://github.com/endurain-project/endurain)
   [![Trademark Policy](https://img.shields.io/badge/trademark-Endurain%E2%84%A2-blue)](./TRADEMARK.md)
 
   **A self-hosted fitness tracking service**  
-  Visit Endurain's [Mastodon profile](https://fosstodon.org/@endurain) and [Discord server](https://discord.gg/6VUjUq2uZR).
+  Visit Endurain's [Mastodon profile](https://fosstodon.org/@endurain), [Bluesky profile](https://bsky.app/profile/endurain.bsky.social), [Discord server](https://discord.gg/6VUjUq2uZR) and [LinkedIn page](https://www.linkedin.com/company/endurain).
 
   <img src="screenshot_01.png" alt="Endurain Screenshot">
 </div>
@@ -50,7 +47,6 @@ Endurain is a self-hosted fitness tracking service designed to give users full c
 - **Frontend:** Vue.js 3 with TypeScript, Tailwind CSS and shadcn-vue components, with Pinia and TanStack Query for state management
 - **Backend:** Python FastAPI, Alembic, SQLAlchemy, Apprise, stravalib and python-garminconnect for Strava and Garmin Connect integration, gpxpy, tcxreader and fitdecode for .gpx, .tcx and .fit file import respectively
 - **Database:** PostgreSQL for efficient data management
-- **Observability:** Jaeger for basic tracing and monitoring
 - **Integrations:** Supports Strava and Garmin Connect. Manual upload of activities using .gpx, .tcx and .fit files are also supported
 
 To deploy Endurain, a Docker image is available, and a comprehensive example can be found in the "docker-compose.yml.example" file provided. Configuration is facilitated through environment variables, ensuring flexibility and ease of customization.
@@ -90,5 +86,5 @@ Commercial use of the Endurain name or logos (such as offering paid hosting, pro
 See [`TRADEMARK.md`](./TRADEMARK.md) for full details.
 
 <div align="center">
-  <sub>Built with ❤️ from Portugal | Part of the <a href="https://codeberg.org/endurain-project">Endurain</a> ecosystem</sub>
+  <sub>Built with ❤️ from Portugal | Part of the <a href="https://github.com/endurain-project">Endurain</a> ecosystem</sub>
 </div>

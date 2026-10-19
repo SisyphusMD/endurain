@@ -7,13 +7,13 @@
     <a href="https://translate.codeberg.org/engage/endurain/"><img src="https://translate.codeberg.org/widget/endurain/svg-badge.svg" alt="Translation status"></a>
     </a>
     <img src="https://img.shields.io/badge/license-AGPL%20v3-blue" alt="License">
-    <a href="https://codeberg.org/endurain-project/endurain/releases">
-      <img src="https://img.shields.io/badge/dynamic/json?url=https://codeberg.org/api/v1/repos/endurain-project/endurain/releases/latest&query=$.tag_name&label=release&color=blue" alt="Latest Release">
+    <a href="https://github.com/endurain-project/endurain/releases">
+      <img src="https://img.shields.io/github/v/release/endurain-project/endurain?label=release&color=blue" alt="Latest Release">
     </a>
-    <a href="https://codeberg.org/endurain-project/endurain">
-      <img src="https://img.shields.io/badge/dynamic/json?url=https://codeberg.org/api/v1/repos/endurain-project/endurain&query=$.stars_count&label=stars&logo=codeberg" alt="Stars">
+    <a href="https://github.com/endurain-project/endurain">
+      <img src="https://img.shields.io/github/stars/endurain-project/endurain?label=stars&logo=github" alt="Stars">
     </a>
-    <a href="https://codeberg.org/endurain-project/endurain/blob/master/TRADEMARK.md">
+    <a href="https://github.com/endurain-project/endurain/blob/master/TRADEMARK.md">
       <img src="https://img.shields.io/badge/trademark-Endurain%E2%84%A2-blue" alt="Trademark Policy">
     </a>
   </p>
@@ -22,7 +22,7 @@
       Endurain
   </h2>
   <p>
-    A self-hosted fitness tracking service - <a href="https://fosstodon.org/@endurain">Mastodon profile</a> - <a href="https://discord.gg/6VUjUq2uZR">Discord server</a> - <a href="#newsletter">Newsletter</a>
+    A self-hosted fitness tracking service - <a href="https://fosstodon.org/@endurain">Mastodon profile</a> - <a href="https://bsky.app/profile/endurain.bsky.social">Bluesky profile</a> - <a href="https://discord.gg/6VUjUq2uZR">Discord server</a> - <a href="https://www.linkedin.com/company/endurain">LinkedIn page</a> - <a href="#newsletter">Newsletter</a>
   </p>
 </div>
 
@@ -46,7 +46,6 @@ Endurain is a self-hosted fitness tracking service designed to give users full c
 - **Frontend:** Vue.js 3 with TypeScript, Tailwind CSS and shadcn-vue components, with Pinia and TanStack Query for state management
 - **Backend:** Python FastAPI, Alembic, SQLAlchemy, Apprise, stravalib and python-garminconnect for Strava and Garmin Connect integration, gpxpy, tcxreader and fitdecode for .gpx, .tcx and .fit file import respectively 
 - **Database:** PostgreSQL for efficient data management
-- **Observability:** Jaeger for basic tracing and monitoring
 
 To deploy Endurain, a Docker image is available, and a comprehensive example can be found in the "docker-compose.yml.example" file provided in the project repository. Configuration is facilitated through environment variables, ensuring flexibility and ease of customization.
 
@@ -80,12 +79,12 @@ Endurain currently supports:
 - Define and track goals
 - MFA TOTP support
 - Password reset through email link. Uses Apprise for email notifications
-- Sign-up with configurable email verification and admin approva
+- Sign-up with configurable email verification and admin approval
 - SSO support (OIDC/SAML)
 
 ## Planned features
 
-Please visit the [ROADMAP.md file on Codeberg](https://codeberg.org/endurain-project/endurain/src/branch/master/ROADMAP.md).
+Please visit the [ROADMAP.md file on GitHub](https://github.com/endurain-project/endurain/blob/master/ROADMAP.md).
 
 ## Sponsors
 
@@ -100,7 +99,7 @@ Support Endurain's development on:
 
 ## Contributing
 
-Contributions are welcomed! Please open an issue to discuss any changes or improvements before submitting a PR. Check out the [Contributing Guidelines](https://codeberg.org/endurain-project/endurain/blob/master/CONTRIBUTING.md) for more details.
+Contributions are welcomed! Please open an issue to discuss any changes or improvements before submitting a PR. Check out the [Contributing Guidelines](https://github.com/endurain-project/endurain/blob/master/CONTRIBUTING.md) for more details.
 
 ## License
 
@@ -131,12 +130,12 @@ Endurain® is a trademark of João Vitória Silva.
 You are welcome to self-host Endurain and use the name and logo, including for personal, educational, research, or community (non-commercial) use.  
 Commercial use of the Endurain name or logos (such as offering paid hosting, products, or services) is **not permitted without prior written permission**.
 
-See [`TRADEMARK.md`](https://codeberg.org/endurain-project/endurain/blob/master/TRADEMARK.md) for full details.
+See [`TRADEMARK.md`](https://github.com/endurain-project/endurain/blob/master/TRADEMARK.md) for full details.
 
 ## Newsletter
 
 --8<-- "_snippets/newsletter.html"
 
 <div align="center">
-  <sub>Built with ❤️ from Portugal | Part of the <a href="https://codeberg.org/endurain-project">Endurain</a> ecosystem</sub>
+  <sub>Built with ❤️ from Portugal | Part of the <a href="https://github.com/endurain-project">Endurain</a> ecosystem</sub>
 </div>
