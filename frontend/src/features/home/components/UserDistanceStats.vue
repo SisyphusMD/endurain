@@ -64,7 +64,7 @@ function formatValue(row: SportStatRow): string {
   if (metric.value === 'time') {
     return formatHmsDuration(row.stats.time)
   }
-  return `${Math.round(row.stats.calories)} ${t('home.stats.caloriesUnit')}`
+  return `${Math.round(row.stats.calories)} ${t('app.units.kcal')}`
 }
 </script>
 

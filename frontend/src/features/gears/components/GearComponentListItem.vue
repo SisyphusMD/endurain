@@ -38,7 +38,7 @@ const title = computed(() => `${props.component.brand} ${props.component.model}`
 const typeLabel = computed(() => humanizeComponentType(props.component.type))
 const timeBased = computed(() => isTimeBasedGear(props.gearType))
 const distanceUnit = computed(() =>
-  props.units === 'imperial' ? t('gears.unitMi') : t('gears.unitKm'),
+  props.units === 'imperial' ? t('app.units.mi') : t('app.units.km'),
 )
 
 /** Accumulated usage, rendered as a duration (racquet) or distance + unit. */

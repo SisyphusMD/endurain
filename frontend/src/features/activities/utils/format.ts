@@ -98,16 +98,16 @@ export function formatPaceClock(secondsPerUnit: number): string {
  *
  * @param activityType - Numeric activity type.
  * @param units - The user's unit system.
- * @returns The pace unit's i18n key (e.g. `activities.units.minPerKm`).
+ * @returns The pace unit's i18n key (e.g. `app.units.minPerKm`).
  */
 export function paceUnitLabel(activityType: number, units: Units): string {
   if (activityTypeIsSwimming(activityType)) {
-    return units === 'imperial' ? 'activities.units.minPer100yd' : 'activities.units.minPer100m'
+    return units === 'imperial' ? 'app.units.minPer100yd' : 'app.units.minPer100m'
   }
   if (activityTypeIsRowing(activityType) || activityTypeIsStandUpPaddling(activityType)) {
-    return 'activities.units.minPer500m'
+    return 'app.units.minPer500m'
   }
-  return units === 'imperial' ? 'activities.units.minPerMi' : 'activities.units.minPerKm'
+  return units === 'imperial' ? 'app.units.minPerMi' : 'app.units.minPerKm'
 }
 
 /**
@@ -168,9 +168,9 @@ export function formatPace(
  */
 export function speedUnitLabel(activityType: number, units: Units): string {
   if (activityTypeUsesKnots(activityType)) {
-    return 'activities.units.kn'
+    return 'app.units.kn'
   }
-  return units === 'imperial' ? 'activities.units.mph' : 'activities.units.kmh'
+  return units === 'imperial' ? 'app.units.mph' : 'app.units.kmh'
 }
 
 /**
@@ -223,9 +223,9 @@ export function formatSpeed(
  */
 export function distanceUnitLabel(activityType: number, units: Units): string {
   if (activityTypeIsSwimming(activityType)) {
-    return units === 'imperial' ? 'activities.units.yd' : 'activities.units.m'
+    return units === 'imperial' ? 'app.units.yd' : 'app.units.m'
   }
-  return units === 'imperial' ? 'activities.units.mi' : 'activities.units.km'
+  return units === 'imperial' ? 'app.units.mi' : 'app.units.km'
 }
 
 /**
@@ -284,7 +284,7 @@ export function elevationToDisplay(meters: number, units: Units): number {
  * @returns The split elevation metric.
  */
 export function formatElevation(meters: number | null | undefined, units: Units): FormattedMetric {
-  const unit = units === 'imperial' ? 'activities.units.ft' : 'activities.units.m'
+  const unit = units === 'imperial' ? 'app.units.ft' : 'app.units.m'
   if (meters === null || meters === undefined) {
     return { value: '--', unit }
   }
@@ -330,5 +330,5 @@ export function presentCadence(raw: number, activityType: number): number {
  * @returns The cadence unit's i18n key.
  */
 export function cadenceUnitLabel(activityType: number): string {
-  return activityTypeUsesSpm(activityType) ? 'activities.units.spm' : 'activities.units.rpm'
+  return activityTypeUsesSpm(activityType) ? 'app.units.spm' : 'app.units.rpm'
 }

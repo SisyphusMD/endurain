@@ -41,8 +41,8 @@ describe('buildStreamChart', () => {
     expect(chart?.render.xUnit).toBe('km')
     // Aggregate stats are shown beneath the chart.
     expect(chart?.stats).toEqual([
-      { labelKey: 'activities.metrics.avgHr', value: '150', unit: 'activities.units.bpm' },
-      { labelKey: 'activities.metrics.maxHr', value: '175', unit: 'activities.units.bpm' },
+      { labelKey: 'activities.metrics.avgHr', value: '150', unit: 'app.units.bpm' },
+      { labelKey: 'activities.metrics.maxHr', value: '175', unit: 'app.units.bpm' },
     ])
   })
 

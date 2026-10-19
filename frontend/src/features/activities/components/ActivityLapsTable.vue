@@ -114,9 +114,7 @@ const rows = computed<LapRow[]>(() =>
           : `${Math.round(presentCadence(lap.avgCadence, props.activity.activityType))}`,
       cycles: lap.totalCycles === null ? '--' : `${lap.totalCycles}`,
       hr:
-        lap.avgHeartRate === null
-          ? '--'
-          : `${Math.round(lap.avgHeartRate)} ${t('activities.units.bpm')}`,
+        lap.avgHeartRate === null ? '--' : `${Math.round(lap.avgHeartRate)} ${t('app.units.bpm')}`,
       isRest: entry.isRest,
     }
   }),

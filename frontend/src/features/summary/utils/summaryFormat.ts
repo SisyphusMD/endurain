@@ -47,7 +47,7 @@ export function formatSummaryDistance(meters: number, units: Units): SummaryMetr
   const value = units === 'imperial' ? kmToMiles(km) : km
   return {
     value: value.toFixed(2),
-    unit: units === 'imperial' ? 'activities.units.mi' : 'activities.units.km',
+    unit: units === 'imperial' ? 'app.units.mi' : 'app.units.km',
   }
 }
 
@@ -63,7 +63,7 @@ export function formatSummaryElevation(meters: number, units: Units): SummaryMet
   const value = units === 'imperial' ? meters * METERS_TO_FEET : meters
   return {
     value: Math.round(value).toString(),
-    unit: units === 'imperial' ? 'activities.units.ft' : 'activities.units.m',
+    unit: units === 'imperial' ? 'app.units.ft' : 'app.units.m',
   }
 }
 
@@ -92,5 +92,5 @@ export function formatSummaryCalories(calories: number): SummaryMetric {
   const grouped = Math.round(calories)
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  return { value: grouped, unit: 'activities.units.kcal' }
+  return { value: grouped, unit: 'app.units.kcal' }
 }

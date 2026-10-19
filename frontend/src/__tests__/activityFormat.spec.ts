@@ -49,12 +49,12 @@ describe('formatPace', () => {
     // 0.3 s/m = 300 s/km = 5:00/km.
     expect(formatPace(0.3, RUN, 'metric')).toEqual({
       value: '5:00',
-      unit: 'activities.units.minPerKm',
+      unit: 'app.units.minPerKm',
     })
     // 0.3 s/m × 1609.34 = 482.8 s/mi ≈ 8:03/mi.
     expect(formatPace(0.3, RUN, 'imperial')).toEqual({
       value: '8:03',
-      unit: 'activities.units.minPerMi',
+      unit: 'app.units.minPerMi',
     })
   })
 
@@ -62,18 +62,18 @@ describe('formatPace', () => {
     // 0.9 s/m = 90 s/100m = 1:30/100m.
     expect(formatPace(0.9, SWIM, 'metric')).toEqual({
       value: '1:30',
-      unit: 'activities.units.minPer100m',
+      unit: 'app.units.minPer100m',
     })
-    expect(formatPace(0.9, SWIM, 'imperial').unit).toBe('activities.units.minPer100yd')
+    expect(formatPace(0.9, SWIM, 'imperial').unit).toBe('app.units.minPer100yd')
   })
 
   it('formats rowing pace per 500m regardless of unit system', () => {
     // 0.24 s/m = 120 s/500m = 2:00/500m.
     expect(formatPace(0.24, ROW, 'metric')).toEqual({
       value: '2:00',
-      unit: 'activities.units.minPer500m',
+      unit: 'app.units.minPer500m',
     })
-    expect(formatPace(0.24, ROW, 'imperial').unit).toBe('activities.units.minPer500m')
+    expect(formatPace(0.24, ROW, 'imperial').unit).toBe('app.units.minPer500m')
   })
 
   it('returns a placeholder for missing or non-positive pace', () => {
@@ -94,17 +94,17 @@ describe('formatSpeed', () => {
   it('formats cycling speed in km/h and mph', () => {
     expect(formatSpeed(10, CYCLE, 'metric')).toEqual({
       value: '36.00',
-      unit: 'activities.units.kmh',
+      unit: 'app.units.kmh',
     })
     expect(formatSpeed(10, CYCLE, 'imperial')).toEqual({
       value: '22.37',
-      unit: 'activities.units.mph',
+      unit: 'app.units.mph',
     })
   })
 
   it('uses knots for marine sports regardless of unit system', () => {
-    expect(formatSpeed(10, SAIL, 'metric')).toEqual({ value: '19.44', unit: 'activities.units.kn' })
-    expect(formatSpeed(10, SAIL, 'imperial').unit).toBe('activities.units.kn')
+    expect(formatSpeed(10, SAIL, 'metric')).toEqual({ value: '19.44', unit: 'app.units.kn' })
+    expect(formatSpeed(10, SAIL, 'imperial').unit).toBe('app.units.kn')
   })
 })
 
@@ -119,30 +119,30 @@ describe('formatDistance', () => {
   it('formats non-swimming distance in km/mi', () => {
     expect(formatDistance(5000, RUN, 'metric')).toEqual({
       value: '5.00',
-      unit: 'activities.units.km',
+      unit: 'app.units.km',
     })
     expect(formatDistance(5000, RUN, 'imperial')).toEqual({
       value: '3.11',
-      unit: 'activities.units.mi',
+      unit: 'app.units.mi',
     })
   })
 
   it('formats swimming distance in metres/yards', () => {
     expect(formatDistance(1000, SWIM, 'metric')).toEqual({
       value: '1000',
-      unit: 'activities.units.m',
+      unit: 'app.units.m',
     })
     expect(formatDistance(1000, SWIM, 'imperial')).toEqual({
       value: '1094',
-      unit: 'activities.units.yd',
+      unit: 'app.units.yd',
     })
   })
 })
 
 describe('formatElevation', () => {
   it('formats elevation in metres or feet', () => {
-    expect(formatElevation(100, 'metric')).toEqual({ value: '100', unit: 'activities.units.m' })
-    expect(formatElevation(100, 'imperial')).toEqual({ value: '328', unit: 'activities.units.ft' })
+    expect(formatElevation(100, 'metric')).toEqual({ value: '100', unit: 'app.units.m' })
+    expect(formatElevation(100, 'imperial')).toEqual({ value: '328', unit: 'app.units.ft' })
   })
 
   it('returns a placeholder for missing input', () => {
@@ -154,7 +154,7 @@ describe('presentCadence', () => {
   it.each([11, 12, 31, 44])('presents walking type %i cadence in SPM', (type) => {
     expect(presentCadence(70, type)).toBe(140)
     expect(presentCadence(0, type)).toBe(0)
-    expect(cadenceUnitLabel(type)).toBe('activities.units.spm')
+    expect(cadenceUnitLabel(type)).toBe('app.units.spm')
   })
 
   it('doubles running cadence to SPM but leaves cycling RPM unchanged', () => {
@@ -163,7 +163,7 @@ describe('presentCadence', () => {
   })
 
   it('labels cadence as spm for running and rpm otherwise', () => {
-    expect(cadenceUnitLabel(RUN)).toBe('activities.units.spm')
-    expect(cadenceUnitLabel(CYCLE)).toBe('activities.units.rpm')
+    expect(cadenceUnitLabel(RUN)).toBe('app.units.spm')
+    expect(cadenceUnitLabel(CYCLE)).toBe('app.units.rpm')
   })
 })

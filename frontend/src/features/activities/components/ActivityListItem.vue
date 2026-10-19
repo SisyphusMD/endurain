@@ -77,13 +77,13 @@ const elevationMetric = computed(() => formatElevation(props.activity.elevationG
 const caloriesMetric = computed<FormattedMetric>(() => {
   const calories = props.activity.calories
   return calories !== null && calories !== undefined && Number.isFinite(calories)
-    ? { value: String(Math.round(calories)), unit: 'activities.units.kcal' }
+    ? { value: String(Math.round(calories)), unit: 'app.units.kcal' }
     : NA_METRIC
 })
 const avgHrMetric = computed<FormattedMetric>(() => {
   const hr = props.activity.averageHr
   return hr !== null && hr !== undefined && Number.isFinite(hr)
-    ? { value: String(Math.round(hr)), unit: 'activities.units.bpm' }
+    ? { value: String(Math.round(hr)), unit: 'app.units.bpm' }
     : NA_METRIC
 })
 

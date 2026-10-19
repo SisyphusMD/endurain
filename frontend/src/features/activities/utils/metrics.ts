@@ -88,7 +88,7 @@ export function buildActivityMetrics(
         key: 'calories',
         labelKey: 'activities.metrics.calories',
         value: String(Math.round(activity.calories)),
-        unit: 'activities.units.kcal',
+        unit: 'app.units.kcal',
         accent: 'effort',
       })
     }
@@ -135,7 +135,7 @@ export function buildActivityMetrics(
         key: 'avgPower',
         labelKey: 'activities.metrics.avgPower',
         value: String(Math.round(activity.averagePower)),
-        unit: 'activities.units.w',
+        unit: 'app.units.w',
         accent: 'effort',
       })
     }
@@ -146,7 +146,7 @@ export function buildActivityMetrics(
         key: 'avgHr',
         labelKey: 'activities.metrics.avgHr',
         value: String(Math.round(activity.averageHr)),
-        unit: 'activities.units.bpm',
+        unit: 'app.units.bpm',
         accent: 'hr',
       })
     }
@@ -157,7 +157,7 @@ export function buildActivityMetrics(
         key: 'maxHr',
         labelKey: 'activities.metrics.maxHr',
         value: String(Math.round(activity.maxHr)),
-        unit: 'activities.units.bpm',
+        unit: 'app.units.bpm',
         accent: 'hr',
       })
     }

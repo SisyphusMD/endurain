@@ -198,22 +198,22 @@ describe('summary formatters', () => {
   it('formats distance in km and miles to two decimals', () => {
     expect(formatSummaryDistance(12500, 'metric')).toEqual({
       value: '12.50',
-      unit: 'activities.units.km',
+      unit: 'app.units.km',
     })
     expect(formatSummaryDistance(12500, 'imperial')).toEqual({
       value: '7.77',
-      unit: 'activities.units.mi',
+      unit: 'app.units.mi',
     })
   })
 
   it('formats elevation rounded in metres and feet', () => {
     expect(formatSummaryElevation(123.4, 'metric')).toEqual({
       value: '123',
-      unit: 'activities.units.m',
+      unit: 'app.units.m',
     })
     expect(formatSummaryElevation(100, 'imperial')).toEqual({
       value: '328',
-      unit: 'activities.units.ft',
+      unit: 'app.units.ft',
     })
   })
 
@@ -224,15 +224,13 @@ describe('summary formatters', () => {
   })
 
   it('formats calories grouped into thousands', () => {
-    expect(formatSummaryCalories(1234)).toEqual({ value: '1,234', unit: 'activities.units.kcal' })
-    expect(formatSummaryCalories(999)).toEqual({ value: '999', unit: 'activities.units.kcal' })
+    expect(formatSummaryCalories(1234)).toEqual({ value: '1,234', unit: 'app.units.kcal' })
+    expect(formatSummaryCalories(999)).toEqual({ value: '999', unit: 'app.units.kcal' })
   })
 
   it('combines a metric value and unit, omitting an empty unit', () => {
     const t = i18n.global.t
-    expect(combineSummaryMetric({ value: '12.50', unit: 'activities.units.km' }, t)).toBe(
-      '12.50 km',
-    )
+    expect(combineSummaryMetric({ value: '12.50', unit: 'app.units.km' }, t)).toBe('12.50 km')
     expect(combineSummaryMetric({ value: '5', unit: '' }, t)).toBe('5')
   })
 })

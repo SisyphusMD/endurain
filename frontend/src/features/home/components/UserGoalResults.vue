@@ -73,7 +73,7 @@ function unitFor(goalType: GoalMetric, activityType: number): string {
     return t(formatElevation(0, props.units).unit)
   }
   if (goalType === 'calories') {
-    return t('settings.goals.unit.calories')
+    return t('app.units.kcal')
   }
   return ''
 }

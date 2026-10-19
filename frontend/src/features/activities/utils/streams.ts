@@ -202,21 +202,20 @@ function valueFormatter(
 ): (value: number) => string {
   switch (metric) {
     case 'hr':
-      return (v) => `${Math.round(v)} ${t('activities.units.bpm')}`
+      return (v) => `${Math.round(v)} ${t('app.units.bpm')}`
     case 'power':
-      return (v) => `${Math.round(v)} ${t('activities.units.w')}`
+      return (v) => `${Math.round(v)} ${t('app.units.w')}`
     case 'cadence':
       return (v) => `${Math.round(v)} ${t(cadenceUnitLabel(activityType))}`
     case 'elevation':
-      return (v) =>
-        `${Math.round(v)} ${t(units === 'imperial' ? 'activities.units.ft' : 'activities.units.m')}`
+      return (v) => `${Math.round(v)} ${t(units === 'imperial' ? 'app.units.ft' : 'app.units.m')}`
     case 'velocity':
       return (v) => `${v.toFixed(1)} ${t(speedUnitLabel(activityType, units))}`
     case 'pace':
       return (v) => formatPaceClock(v)
     case 'temperature':
       return (v) =>
-        `${v.toFixed(1)}${t(units === 'imperial' ? 'activities.units.fahrenheit' : 'activities.units.celsius')}`
+        `${v.toFixed(1)}${t(units === 'imperial' ? 'app.units.fahrenheit' : 'app.units.celsius')}`
     default:
       return (v) => String(v)
   }
@@ -270,7 +269,7 @@ function buildChartXAxis(
   if (activity.distance > 0) {
     return {
       labels: buildDistanceLabels(pointCount, activity.distance, units),
-      unit: units === 'imperial' ? 'activities.units.mi' : 'activities.units.km',
+      unit: units === 'imperial' ? 'app.units.mi' : 'app.units.km',
     }
   }
   const seconds = activity.totalElapsedTime ?? activity.totalTimerTime ?? 0
@@ -316,7 +315,7 @@ function buildStreamStats(metric: StreamMetric, activity: Activity, units: Units
     stats.push({ labelKey, value: formatted.value, unit: formatted.unit })
   }
   const watts = (labelKey: string, value: number): void => {
-    stats.push({ labelKey, value: String(Math.round(value)), unit: 'activities.units.w' })
+    stats.push({ labelKey, value: String(Math.round(value)), unit: 'app.units.w' })
   }
 
   switch (metric) {
@@ -325,14 +324,14 @@ function buildStreamStats(metric: StreamMetric, activity: Activity, units: Units
         stats.push({
           labelKey: 'activities.metrics.avgHr',
           value: String(Math.round(activity.averageHr)),
-          unit: 'activities.units.bpm',
+          unit: 'app.units.bpm',
         })
       }
       if (statPresent(activity.maxHr)) {
         stats.push({
           labelKey: 'activities.metrics.maxHr',
           value: String(Math.round(activity.maxHr)),
-          unit: 'activities.units.bpm',
+          unit: 'app.units.bpm',
         })
       }
       break
