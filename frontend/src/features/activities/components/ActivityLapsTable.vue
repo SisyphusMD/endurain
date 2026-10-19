@@ -11,6 +11,7 @@ import {
   formatDistance,
   formatElevation,
   formatHmsDuration,
+  presentCadence,
 } from '@/features/activities/utils/format'
 import { normalizeLaps, summarizeActiveLaps } from '@/features/activities/utils/laps'
 import { formatLapTempo } from '@/features/activities/utils/metrics'
@@ -103,7 +104,10 @@ const rows = computed<LapRow[]>(() =>
         lap.totalAscent === null
           ? '--'
           : combineMetric(formatElevation(lap.totalAscent, props.units)),
-      strokeRate: lap.avgCadence === null ? '--' : `${Math.round(lap.avgCadence)}`,
+      strokeRate:
+        lap.avgCadence === null
+          ? '--'
+          : `${Math.round(presentCadence(lap.avgCadence, props.activity.activityType))}`,
       cycles: lap.totalCycles === null ? '--' : `${lap.totalCycles}`,
       hr: lap.avgHeartRate === null ? '--' : `${Math.round(lap.avgHeartRate)} bpm`,
       isRest: entry.isRest,

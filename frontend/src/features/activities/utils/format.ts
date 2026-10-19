@@ -4,11 +4,10 @@ import { kmToMiles } from '@/utils/units'
 
 import {
   activityTypeIsRowing,
-  activityTypeIsRunning,
   activityTypeIsStandUpPaddling,
   activityTypeIsSwimming,
-  activityTypeIsWalking,
   activityTypeUsesKnots,
+  activityTypeUsesSpm,
 } from './activityType'
 
 /** The user's unit system. */
@@ -314,7 +313,7 @@ export function temperatureToDisplay(celsius: number, units: Units): number {
  * @returns The presentation-ready cadence.
  */
 export function presentCadence(raw: number, activityType: number): number {
-  return activityTypeIsRunning(activityType) || activityTypeIsWalking(activityType) ? raw * 2 : raw
+  return activityTypeUsesSpm(activityType) ? raw * 2 : raw
 }
 
 /**
@@ -324,5 +323,5 @@ export function presentCadence(raw: number, activityType: number): number {
  * @returns The cadence unit label.
  */
 export function cadenceUnitLabel(activityType: number): string {
-  return activityTypeIsRunning(activityType) || activityTypeIsWalking(activityType) ? 'spm' : 'rpm'
+  return activityTypeUsesSpm(activityType) ? 'spm' : 'rpm'
 }
