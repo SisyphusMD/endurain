@@ -77,7 +77,7 @@ function periodLabel(bucket: number): string {
               {{ combineSummaryMetric(formatSummaryDistance(row.totalDistance, units), t) }}
             </td>
             <td class="px-3 py-2 text-end tabular-nums">
-              {{ combineSummaryMetric(formatSummaryDuration(row.totalDuration), t) }}
+              {{ combineSummaryMetric(formatSummaryDuration(row.totalDuration, t), t) }}
             </td>
             <td class="hidden px-3 py-2 text-end tabular-nums sm:table-cell">
               {{ combineSummaryMetric(formatSummaryElevation(row.totalElevationGain, units), t) }}

@@ -59,7 +59,7 @@ const targetText = computed<string>(() => {
     case 'elevation':
       return `${metersToElevationValue(goal.elevationMeters ?? 0, props.units)} ${elevationUnit.value}`
     case 'duration':
-      return formatGoalDuration(goal.durationSeconds ?? 0)
+      return formatGoalDuration(goal.durationSeconds ?? 0, t)
   }
   return ''
 })

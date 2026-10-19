@@ -218,9 +218,10 @@ describe('summary formatters', () => {
   })
 
   it('formats duration as a compact clock', () => {
-    expect(formatSummaryDuration(3661)).toEqual({ value: '1h 1m', unit: '' })
-    expect(formatSummaryDuration(600)).toEqual({ value: '10m', unit: '' })
-    expect(formatSummaryDuration(0)).toEqual({ value: '0m', unit: '' })
+    const t = i18n.global.t
+    expect(formatSummaryDuration(3661, t)).toEqual({ value: '1h 1m', unit: '' })
+    expect(formatSummaryDuration(600, t)).toEqual({ value: '10m', unit: '' })
+    expect(formatSummaryDuration(0, t)).toEqual({ value: '0m', unit: '' })
   })
 
   it('formats calories grouped into thousands', () => {

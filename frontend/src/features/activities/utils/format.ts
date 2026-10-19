@@ -27,10 +27,10 @@ const METERS_PER_YARD = 0.9144
 const METERS_TO_FEET = 3.28084
 
 /**
- * Resolves an i18n key to display text. Callers pass their `t`, so these
- * helpers stay free of an i18n instance.
+ * Resolves an i18n key (with optional named parameters) to display text.
+ * Callers pass their `t`, so these helpers stay free of an i18n instance.
  */
-export type Translate = (key: string) => string
+export type Translate = (key: string, named?: Record<string, unknown>) => string
 
 /** A formatted metric split into its value and unit for the metric pills. */
 export interface FormattedMetric {

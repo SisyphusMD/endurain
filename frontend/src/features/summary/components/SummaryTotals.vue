@@ -32,7 +32,7 @@ const tiles = computed(() => [
   {
     key: 'duration',
     label: t('summary.metrics.duration'),
-    metric: formatSummaryDuration(props.totals.totalDuration),
+    metric: formatSummaryDuration(props.totals.totalDuration, t),
   },
   {
     key: 'elevation',

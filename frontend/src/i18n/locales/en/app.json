@@ -63,6 +63,12 @@
     "kcal": "kcal",
     "celsius": "°C",
     "fahrenheit": "°F",
+    "kg": "kg",
+    "lb": "lb",
+    "ml": "ml",
+    "flOz": "fl oz",
+    "hoursMinutes": "{hours}h {minutes}m",
+    "minutes": "{minutes}m",
     "h": "h"
   }
 }

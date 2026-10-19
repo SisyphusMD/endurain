@@ -72,13 +72,18 @@ export function formatSummaryElevation(meters: number, units: Units): SummaryMet
  * suited to large rollups that can span hundreds of hours.
  *
  * @param seconds - Total duration in seconds.
+ * @param t - Translates the duration pattern.
  * @returns The formatted duration (the unit is embedded in the value).
  */
-export function formatSummaryDuration(seconds: number): SummaryMetric {
+export function formatSummaryDuration(seconds: number, t: Translate): SummaryMetric {
   const whole = Math.max(0, Math.floor(seconds))
   const hours = Math.floor(whole / 3600)
   const minutes = Math.floor((whole % 3600) / 60)
-  return { value: hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`, unit: '' }
+  const value =
+    hours > 0
+      ? t('app.units.hoursMinutes', { hours, minutes })
+      : t('app.units.minutes', { minutes })
+  return { value, unit: '' }
 }
 
 /**
