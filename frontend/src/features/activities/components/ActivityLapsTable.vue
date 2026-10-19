@@ -52,6 +52,7 @@ const activeSummary = computed(() => {
   return {
     distance: combineMetric(
       formatDistance(summary.totalDistance, props.activity.activityType, props.units),
+      t,
     ),
     time: formatHmsDuration(summary.totalElapsedTime),
     tempo: formatLapTempo(
@@ -59,6 +60,7 @@ const activeSummary = computed(() => {
       summary.avgSpeed,
       props.activity.activityType,
       props.units,
+      t,
     ),
   }
 })
@@ -88,6 +90,7 @@ const rows = computed<LapRow[]>(() =>
       intensity: lap.intensity,
       distance: combineMetric(
         formatDistance(lap.totalDistance, props.activity.activityType, props.units),
+        t,
       ),
       time: formatHmsDuration(lap.totalElapsedTime),
       // Rest laps record idle drift, so their pace is meaningless — blank it.
@@ -98,18 +101,22 @@ const rows = computed<LapRow[]>(() =>
             lap.enhancedAvgSpeed,
             props.activity.activityType,
             props.units,
+            t,
           ),
       tempoScore: entry.isRest ? null : entry.normalizedScore,
       elevation:
         lap.totalAscent === null
           ? '--'
-          : combineMetric(formatElevation(lap.totalAscent, props.units)),
+          : combineMetric(formatElevation(lap.totalAscent, props.units), t),
       strokeRate:
         lap.avgCadence === null
           ? '--'
           : `${Math.round(presentCadence(lap.avgCadence, props.activity.activityType))}`,
       cycles: lap.totalCycles === null ? '--' : `${lap.totalCycles}`,
-      hr: lap.avgHeartRate === null ? '--' : `${Math.round(lap.avgHeartRate)} bpm`,
+      hr:
+        lap.avgHeartRate === null
+          ? '--'
+          : `${Math.round(lap.avgHeartRate)} ${t('activities.units.bpm')}`,
       isRest: entry.isRest,
     }
   }),
